@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组引用</title>
+</head>
+<body>
+    <script>
+        //字符串-非引用类型
+        var str = '你好';
+        var str1 = str;
+        str = 'hello';
+        console.log(str,str1);
+        //数组-引用类型
+        var arr = [1,2,3];
+        var newArr = arr.slice();
+        newArr[2] = 4;
+        console.log(arr,newArr);
+        //indexOf()
+        var fruits = ['黄瓜','提子','蓝莓','苹果','香蕉'];
+        console.log(fruits.indexOf('黄瓜',-4));
+    </script>
+</body>
+</html>

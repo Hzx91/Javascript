@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽模组的案例 —— 元素如何实现移动</title>
+</head>
+<style>
+    body {
+        position: relative;
+    }
+    #box {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        right: 0;
+        background-color: darkgreen;
+        box-shadow: 0 0 4px #121212;
+        color: #fff;
+        text-align: center;
+        line-height: 400px;
+        font-size: 25px;
+        cursor: move;
+    }
+</style>
+<body>
+    <div id="box">
+        我是一个盒子
+    </div>
+    <script>
+        /* 
+         1. 先在body里面写一个盒子标签，并写好相应的样式
+         2. 在script中获取#box元素
+         3. 事件：按下鼠标（！！！这里不适合用onclick事件，点击事件是点击然后再抬起，不能响应拖拽过程） 移动鼠标 松开鼠标(并且这些事件是连续的，即嵌套关系)
+            1. 按下鼠标,获取当前位置距离浏览器的横纵坐标（X Y）
+            2. 拖拽鼠标（一定要是定位元素才能实现拖动，没有脱标就不能移动）
+                1. 移动量的计算：拖拽量 - 初始位置
+                2. 偏移量 ：移动量 + 初始偏移量
+                3. 修改元素的横纵坐标偏移量，这才是让元素移动起来的关键一步
+            3. 鼠标抬起，将开关锁死，抬起后就不将再把元素移动
+         4. 优化 
+            1. 边界问题：元素会被移动到浏览器边界外 —— 所以就要限制元素的最大最小偏移量
+            2. 失焦问题：当移动元素时，鼠标超出浏览器屏幕外
+         5. 犯错点：
+            1. clientX/Y是鼠标的属性，并不是元素的属性  
+            2. 没有开关isDown,在鼠标没有移动时以及鼠标松开时
+         */
+        var oBox = document.querySelector("#box");
+        var startPos = {
+            x : 0,
+            y : 0,
+            left : 0,
+            top : 0
+        }
+        var isDown = false;
+        var endPos = {
+            x : 0,
+            y : 0
+        }
+        oBox.addEventListener("mousedown",function (e) {
+            startPos.x = e.clientX;
+            startPos.y = e.clientY;
+            startPos.left = getDomOffset(oBox).left;
+            startPos.top = getDomOffset(oBox).top;
+            // console.log(startPos.x,startPos.y);
+            // console.log(startPos.left,startPos.top);
+            isDown = true;
+        },false);
+        document.addEventListener("mousemove",function (e) {
+            if (isDown) {
+                var moveX,moveY,_left,_top;
+                endPos.x = e.clientX;
+                endPos.y = e.clientY;
+                moveX = endPos.x - startPos.x;
+                moveY = endPos.y - startPos.y;
+                _left = moveX + startPos.left;
+                _top = moveY + startPos.top;
+                // console.log(endPos.x,endPos.y);
+                // 修改点击元素的偏移值 !!!且必须加上单位否则不生效
+                oBox.style.left = _left + 'px';
+                oBox.style.top = _top + 'px';
+                if (e.clientX < 0 || e.clientY < 0) {
+                    isDown = false;
+                }
+            }
+        },false)
+        document.addEventListener("mouseup",function () {
+            isDown = false;
+        },false)
+        // 获取元素相对于父祖元素的偏移量
+        function getDomOffset (element) {
+            var offset = {
+                left : 0,
+                top : 0
+            }
+            while(element.offsetParent) {
+                offset.left += element.offsetLeft;
+                offset.top += element.offsetTop;
+                element = element.offsetParent;
+            }
+            return offset;
+        }
+        function fn() {
+            console.log(this);
+            
+        }
+        fn();
+    </script>
+</body>
+</html>

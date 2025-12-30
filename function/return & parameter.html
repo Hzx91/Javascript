@@ -1,0 +1,37 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: 91
+ * @Date: 2025-05-12 18:41:19
+-->
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>函数返回值和参数练习</title>
+    </head>
+    <body>
+        <script>
+        //需求：判断一个数组中全是number类型中是否有小于于0的数，如果有，返回‘存在负数’；如果没有，返回‘不存在负数’。
+        /**
+         * @description:判断number数组中是否存在负数
+         * @param：{Array} arr 需要判断的数组
+         * @return：{String} 判断结果的文本
+         * @Date：2025-05-12 21:48
+         */
+        
+         
+         function isPositiveNumber(arr) {
+            for (var i =0,len = arr.length;i < len;i++) {
+                if (arr[i] < 0) {
+                    return '存在负值';
+                }
+            }
+            return '不存在负值';
+            //该函数的意思就是说只要执行到return就代表把整个函数体执行完
+            
+         }
+        </script>
+    </body>
+</html>

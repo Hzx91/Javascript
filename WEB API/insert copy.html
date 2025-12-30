@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>insertBefore cloneNode</title>
+</head>
+<body>
+  <div id="wrap">
+    <ul class="list">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <ul class="list">
+      <li>1</li>
+      <li>3</li>
+    </ul>
+  </div>
+  <script>
+    // 思路:先获取，然后再复制，最后再插入
+    var aUl = document.querySelectorAll('.list');
+    // 1. 克隆第一个 ul 里的第二个 li（深克隆）
+    var cloneLi = aUl[0].children[1].cloneNode(true); 
+    // 2. 插入到第二个 ul 里（这里插在第二个 ul 的第三个子元素前）
+    aUl[1].insertBefore(cloneLi, aUl[1].lastElementChild); 
+    console.log(aUl[1]);
+  </script>
+</body>
+</html>

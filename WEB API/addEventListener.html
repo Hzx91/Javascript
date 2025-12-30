@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>addEventListener练习</title>
+    </head>
+    <body>
+        <script>
+    // 监听窗口大小发生变化 —— 自己写的
+            function strech() {
+                console.log(window.innerWidth,window.innerHeight);
+            }
+            window.addEventListener("resize",strech,false);
+            // 解除监听
+            // window.removeEventListener("resize",strech,false);
+            // 兼容写法
+            // 1.(用短路运算只能执行一次，并且立即执行)
+            function Listener(element,fn,type) {
+                return {
+                "add": element.addEventListener && element.addEventListener(type,fn,false),
+                "attach": element.attachEventListener && element.attachEvent("on"+type,fn)
+                }
+            }
+            function fn() {
+                console.log("你成功了唉好棒啊！！！");
+            }
+            var obj = Listener(window,fn,"resize");
+            console.log(window.addEventListener("resize",fn,false));
+            console.log(obj.add);
+    // 2.用函数封装和对象实例的方法写 —— 学习后优化调整
+    // 事件监听
+            function fnListener(element,type,fn) {
+                return {
+                "add": function() {
+                    if (element.addEventListener) {
+                        element.addEventListener(type,fn,false);
+                    return true;
+                    }
+                    return false;
+                },
+                "attach": function() {
+                    if (element.attachEvent) {
+                        element.attachEvent("on"+type,fn);
+                    return true;
+                    }
+                    return false;
+                },
+                // 不用判断element["on"+type]是否存在,这一判断会导致如果元素之前没有绑定过该事件（值为 null），就不会执行赋值操作。
+                // 前面的两个判断是为了兼容浏览器，而if (element["on"+type]) 的意思是：只有当元素已经绑定过该事件时，才重新赋值。
+                // if (element.addEventListener) 的作用是检测当前浏览器是否支持这个方法
+                // element["on"+type] 是所有浏览器都支持的基础特性，无需判断，直接赋值即可。判断逻辑反而会破坏功能
+                "on" : function() {
+                        element["on"+type] = fn;
+                        return true;
+                    }
+                }
+            }
+            function fn1() {
+                console.log("嘻嘻，恭喜你又成功了！！！");
+            }
+            var linObj = fnListener(window,"click",fn1);
+            linObj.add();
+            linObj.attach();
+            linObj.on();
+    // 移除事件监听
+            function fnRemoveListener(element,type,fn) {
+                return {
+                    "remove" :function() {
+                        if (element.removeEventListener) {
+                        element.removeEventListener(type,fn,false);
+                        console.log("恭喜宿主历劫成功，归来是富婆！！！");
+                        return true;
+                        }
+                        return false;
+                    },
+                    "detach" :function() {
+                        if (element.detachEvent) {
+                            element.detachEvent("on"+type,fn2);
+                            return true;
+                        }
+                        return false;
+                    },
+                    // 添加普通的"on"+type事件：
+                    "on" :function() {
+                            element["on"+type] = null;
+                            console.log("恭喜宿主历劫成功，归来是富婆！！！");
+                            return true;
+                    }
+                }
+            }
+            var removeObj = fnRemoveListener(window,"click",fn1);
+            removeObj.remove();
+            removeObj.detach();
+            removeObj.on();
+    /* 小结：
+    1.事件绑定的回调函数和事件移除的回调函数必须一致 
+    2.每个事件API方法必须一一一对应，addEventListener()和removeEventListener()对应
+    */ 
+        </script>
+    </body>
+</html>

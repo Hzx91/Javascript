@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while语句循环结构连习</title>
+</head>
+<body>
+    <script>
+    // while语句
+        // 1.100以内7的倍数
+        var num1 = 0;
+        while (num1 <= 100) {
+            if (num1 % 7 === 0) {
+                console.log("100以内7的倍数num1为:"+num1);
+            }
+            num1++;
+        }
+        console.log("--- --- --- --- --- --- --- ---");
+        // 2.100以内所有的偶数
+        var num2 = 0;
+        while (num2 <=100) {
+            if (num2 % 2 === 0) {
+                console.log("100以内所有偶数num2为:"+num2);
+            }
+            num2++;
+        }
+        console.log("--- --- --- --- --- --- --- ---");
+        // 3.100以内的偶数的和
+         var num3 = 0,sum = 0;
+         while (num3 <= 100) {
+            if (num3 % 2 === 0) {
+                sum += num3;
+            }
+            num3++;
+         }
+         console.log("100以内的偶数的和sum为:"+sum);
+         console.log("--- --- --- --- --- --- --- ---");
+        // 4.100以内的奇数
+        var num4 = 0;
+        while (num4 <= 100) {
+            if (num4 % 2 !== 0) {
+                console.log("100以内所有奇数num4为:"+num4);
+            }
+            num4++;
+        }
+        console.log("--- --- --- --- --- --- --- ---");
+        // 5.100以内的奇数的和
+        var num5 = 0;
+        var sum1 = 0;
+        while (num5 <= 100) {
+            if (num5 % 2 !== 0) {
+                sum1 += num5;
+            }
+            num5++;
+        }
+        //错误写法，num4的一直为0，陷入无限循环
+        // var num4 = 0;
+        // var sum1 = 0;
+        // while (num4 <= 100) {
+        //     if (num4 % 2 !== 0) {
+        //         sum1 += num4;
+        //         num4++;
+        //     }
+        // }
+        console.log("100以内的奇数的和sum1为:"+sum1);
+    </script>
+</body>
+</html>

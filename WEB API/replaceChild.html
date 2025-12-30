@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>replaceChild</title>
+</head>
+<body>
+    <div id="big">
+        <p class="des">我将要替换我下面的元素</p>
+        <p class="des">呜呜呜呜，我要被替换了。嘿嘿不伤心柳暗花明又一村</p>
+    </div>
+    <script>
+        var oBig = document.querySelector("#big");
+        oBig.replaceChild(oBig.children[0],oBig.children[1]);
+        console.log(oBig);
+        
+    </script>
+</body>
+</html>

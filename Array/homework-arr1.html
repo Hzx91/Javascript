@@ -1,0 +1,50 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: 91
+ * @Date: 2025-03-30 11:06:51
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>数组第一次作业</title>
+    </head>
+    <body>
+        <script>
+            // 1.观察找规律
+            // var arr0 = ['a','b','c','d','e'];
+            // var arr1 = ['d','e','a','b','c'];
+            // var arr2 = ['b','c','d','e','a'];
+            // var arr3 = ['e','a','b','c','d'];
+            // var arr4 = ['c','d','e','a','b'];
+            // var arr5 = ['a','b','c','d','e'];
+            // var arr = [['d','e','a','b','c'],['b','c','d','e','a'],['e','a','b','c','d'],['c','d','e','a','b'],['a','b','c','d','e']];
+            // for (var i = 1;i <= 15;i++) {
+            //     if (i % 15 === 0) {
+            //         console.log(arr[4]);
+            //     }
+            // }
+            // 2.抽丝剥茧
+            var arry = ['鸡腿',101,'3','奥利奥',9,false,'33a',1.333,'巧克力'];
+            var j = 0;
+            var sum = 0;
+            while (j < 9) {
+                if (typeof(arry[j]) === 'number' && arry[j] % 1 === 0) {
+                    sum += arry[j];
+                }
+                j++;
+            }
+            console.log(sum);
+            // 3.打印星期
+            var weeks = ['星期天','星期一','星期二','星期三','星期四','星期五','星期六'];
+            x = 0;
+            switch (x) {
+                case 0:
+                    result = weeks[x];
+            }
+            console.log(result);
+        </script>
+    </body
+</html>

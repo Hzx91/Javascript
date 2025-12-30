@@ -1,0 +1,42 @@
+<!--
+ * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
+ * @Date: 2025-03-29 10:51:16
+ * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
+ * @LastEditTime: 2025-05-12 18:18:05
+ * @FilePath: \Javascript\homework-repeat\do-while.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>do-while循环语句练习</title>
+    </head>
+    <body>
+        <script>
+        // 1.100以内所有3的倍数的和
+        var num = 0,sum = 0;
+        do {
+            if (num % 3 === 0) {
+                sum += num;
+                console.log("单次sum的和为:"+sum);
+            }
+            num++;
+        } while (num <= 100);
+        console.log("最终sum的结果为:"+sum);
+        // 2.输出询问confirm“起床没？”，选择“确定” 打印“继续睡吧，我就是给你说一下你要迟到了”，选择“取消”继续输出询问confirm“起床没？”
+        do {
+            var result = confirm("起床没？");
+            //选择“确认”，返回true；“取消”返回false。
+            if (result) {
+                console.log("继续睡吧，我就是给你说一下你要迟到了!");
+            }
+        } while (!result);
+        function fn() {
+            return '哈哈哈哈哈';
+        }
+        </script>
+    </body>
+</html>

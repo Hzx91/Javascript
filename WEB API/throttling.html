@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>节流案例</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .hidden {
+                position: relative;
+            }
+            #blue,#red {
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+            }
+            #blue {
+                background-color: rgb(79, 114, 240);
+            }
+            #red {
+                background-color: rgb(234, 87, 168);
+                top: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="hidden">
+            <div id="blue"></div>
+            <div id="red"></div>
+        </div>
+        
+        <script>
+            /* 
+              1.小球滚动 —— 束流版
+                思路：
+                  1. 获取元素（用封装的函数）
+                  2. 初始化速度bSpeed、rSpeed，便于后面元素偏移进行参照
+                  3. 初始化元素偏移值.style.left = '0px' !!! oBlue.style.left 初始值是空字符串（不是 0px）
+                  4. 用循环定时器不断对元素的偏移值进行累加修改
+                    易错点：
+                        1. left,top,right,bottom是有单位的，px
+                        2. oBlue.style.left(字符串类型) <= '100000px'错误
+                        3. 相反，offsetLeft系列是数字类型 !!!但拼接 'px' 时，若直接用 offsetLeft + bSpeed，本质是字符串拼接（而非数值计算），会导致 left 变成 1000.1px 这类异常值（浏览器解析混乱）。所以就用变量先存一下
+             */
+             var oBlue = $("#blue");
+             var oRed = $("#red");
+             var bSpeed = .1;
+             var rSpeed = .11;
+            //  初始化值
+             oBlue.style.left = '0px';
+             oRed.style.left = '0px';
+             var timer = setInterval(function () {
+                var bLeft = oBlue.offsetLeft + bSpeed;
+                var rLeft = oRed.offsetLeft + rSpeed;
+                // oBlue.style.left <= '100000px'错误 隐式转换为NaN <= NaN 
+                if (bLeft <= 1000 && rLeft <= 1000) {
+                    oBlue.style.left = bLeft + 'px';
+                    oRed.style.left = rLeft + 'px';
+                    console.log("我是蓝色" + oBlue.style.left);
+                    console.log("我是红色" + oRed.style.left);
+                }else {
+                    // return false;
+                    clearInterval(timer);
+                }
+                    bSpeed  += bSpeed;
+                    rSpeed  += rSpeed;
+             },1000)
+            // 获取一个元素
+            function $ (ele) {
+                return document.querySelector(ele);
+            }
+            // 获取多个元素
+            function $$ (ele) {
+                return document.querySelectorAll(ele);
+            }
+        </script>
+    </body>
+</html>

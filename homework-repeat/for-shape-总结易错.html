@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>for循环语句练习2</title>
+    </head>
+    <body>
+        <script>
+            // 1.正方形
+            var str = '';//声明一个空字符串
+            for (var i = 0;i < 5;i++) {
+                for (var j = 0;j < 5;j++) {
+                    str += '*'
+                }
+                str += '\n';
+            }
+            console.log(str);
+            //而上面的是将所有输出的内容存储到一个字符串变量中，最后再统一打印。要尽可能多的用上面的代码，用变量存储输出的值。
+            //与这个不一样，下面的代码是一边解释一边打印；每次调用console.log都会触发一次输出操作，频繁的输出操作可能会带来一定的性能开销。
+            for (var i = 0;i < 5;i++) {
+                for (var j = 0;j < 5;j++) {
+                    console.log("1");
+                }
+                console.log("\n");
+            }
+            // 2.直角三角形
+            var str1 = '';
+            for (var num = 1;num <= 5;num++){
+                for (var num1 = 0;num1 < num;num1++) {
+                    str1 += '*';
+                }
+                str1 += '\n';
+            }
+            console.log(str1);
+            // 3.9*9乘法表
+            var num2 = 1,num3 = 1,mutiple = '',str2 = '\n';
+            for (num2;num2 <= 9;num2++) {
+                for (num3;num3 <= num2;num3++) {
+                    mutiple = + num2 + '*' + num3 + '=' + ( num2 * num3 ) + '\t';
+                }
+                console.log(str2);
+            }
+            console.log(mutiple);
+            // vs正确写法：
+            var mutiple = '';
+            for (var num2 = 1; num2 <= 9; num2++) {
+                for (var num3 = num2; num3 <= 9; num3++) {
+                    mutiple += num2 + '*' + num3 + '=' + (num2 * num3) + '\t';
+                }
+                mutiple += '\n';
+            }
+            console.log(mutiple);
+            // 总结：1.变量初始化放在循环里面和放在外面有明显的区别：
+            // 放在外面———初始化变量只会用一次，后面的值会覆盖初始化变量；
+            // let num = 0;
+            // for (let i = 0; i < 3; i++) {
+            //     num = num + 1;
+            //     console.log(num);
+            // }
+            // 而放在里面初始化变量每循环一次都会被调用，不会覆盖。
+            // for (let i = 0; i < 3; i++) {
+            //     let num = 0;
+            //     num = num + 1;
+            //     console.log(num);
+            // }
+            // 总结：2.mutiple = + num2 + '*' + num3 + '=' + ( num2 * num3 ) + '\t';没有拼接，后面的值会将前面的值覆盖，所以只会输入最后一个值。
+        </script>
+    </body>
+</html>

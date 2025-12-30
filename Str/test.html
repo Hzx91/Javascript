@@ -1,0 +1,36 @@
+<!--
+ * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
+ * @Date: 2025-04-15 17:22:24
+ * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
+ * @LastEditTime: 2025-05-12 18:06:08
+ * @FilePath: \Javascript\Str\test.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串基础练习</title>
+</head>
+<body>
+    <script>
+        var str = '假如给我三天光明,我会干什么?假如给我帅气的面孔,我会干什么?假如给我一个大西瓜,我会干什么?假如给我一瓶冰阔落,我会干什么？';
+        //需求：返回每个假如的索引值
+        //用到的知识点：1 .indexOf() — 可以查找索查找参数出现的第一个索引值；
+        //             2 但是上面的函数只能寻找一个，有多个返回值，并且做的是相同的工作，所以可以用循环
+        //             3 变量的声明：获取假如的索引值 — targetIdx;查找的起始索引值 — Idx；
+        //             4 循环实现：只要返回的索引值为-1，就表示所查找的参数不存在;所获取的索引值加2就可以获取新的（下个）索引值；
+        //             注：很容易错的一点就是：容易在while里面忽略该表达式：targetIdx = str.indexOf('假如',Idx);
+        var Idx = 0;
+        var targetIdx = str.indexOf('假如',Idx);
+        while (targetIdx !== -1) {
+            console.log(targetIdx);
+            Idx = targetIdx + 2;
+            targetIdx = str.indexOf('假如',Idx);
+        }
+        console.log(str.split('[]'));
+        
+    </script>
+</body>
+</html>

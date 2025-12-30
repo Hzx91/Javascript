@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="xxx">
+        <meta name="description" content="xxx">
+        <title>if条件判断语句练习</title>
+    </head>
+    <body> 
+        <script>
+            //案例1求婚
+            var money= 10000;
+            var ring = true;
+            if(money> 10000 || (ring && money > 5000)){
+                console.log("求婚成功");
+            }else if(ring || money >= 5000 && money <= 10000){
+                console.log("考虑考虑");
+            }else{
+                console.log("求婚失败");
+            }
+
+            //案例2分数等级
+            var grade = 60; 
+            var result;
+            if(grade >= 0 && grade <= 100){
+                if(grade > 90 && grade <= 100){
+                    result = 'A';
+                }else if(grade > 80){
+                    result = 'B';
+                }else if(grade > 70){
+                    result = 'C';
+                }else if(grade > 60){
+                    result = 'D';
+                }else{
+                    result = 'E';
+                }
+                console.log('你的等级为' + result);
+        }
+        </script>
+    </body>
+</html>

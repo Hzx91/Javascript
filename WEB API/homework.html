@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>以下列虚拟对象添加对应的标签到页面上</title>
+  </head>
+
+  <body>
+    <script>
+      // 1.创建一个父元素div,id名为header,类名为title fw400 c666 fz28，文本内容有我是一个header标签
+      var eleDiv = document.createElement("div"); //创建div节点
+      // document.body.appendChild(eleDiv);//将div添加到body中——法1
+      // document.body.append(eleDiv);//法2
+      eleDiv.id = "header";
+      eleDiv.className = "title fw400 c666 fz28";
+      eleDiv.innerText = "我是一个header标签";
+      document.body.append(eleDiv);
+      // var eleH1 = document.createElement("h1");
+      //封装创建元素对象函数
+      function createElement(tag) {
+        return document.createElement(tag);
+      }
+      //错误：调用函数的时候括号里面是字符串，如果没有引号浏览器会将其解释为变量
+      var eleH1 = createElement("h1");
+      //封装创建元素的属性的函数
+      function createAttribute(name, text) {
+        return {
+          className: (eleH1.className = name),
+          contentText: (eleH1.innerHTML = text),
+        };
+      }
+      createAttribute("logo", "我是logo");
+      eleDiv.appendChild(eleH1);
+      //创建ul元素
+      var eleUl = createElement("ul");
+      eleUl.className = "nav";
+      eleDiv.appendChild(eleUl);
+      //创建ul第一个子元素li
+      var fLi = createElement("li");
+      fLi.className = "list";
+      fLi.innerText = "导航1";
+      eleUl.appendChild(fLi);
+      //创建ul第二个子元素li
+      var sLi = createElement("li");
+      sLi.className = "list";
+      sLi.innerText = "导航2";
+      eleUl.appendChild(sLi);
+      /* 
+      // 所遇到的问题：
+      // 当你第一次调用appendChild(eleDiv)时，元素已经被添加到文档中。然后第二次调用append(eleDiv)时，浏览器会尝试再次添加同一个元素。根据 DOM 规范，一个元素不能同时存在于文档的多个位置，因此第二次添加操作实际上会移动元素，而不是复制它。 
+      // 关键问题：如果你在设置innerHTML属性之前就已经将元素添加到文档中，那么在设置innerHTML之后，浏览器可能不会立即更新显示。这是因为元素已经在文档流中，修改内容后需要手动触发重绘。
+      // 解决方案：正确的做法是先设置元素的所有属性和内容，然后再将其添加到文档中。这样可以确保浏览器在渲染元素时已经包含了所有内容。
+    */
+
+      /* 
+      将这个虚拟节点数据 具象化成实际标签 
+    */
+      var element = {
+        tagName: "div",
+        id: "header",
+        className: "title fw400 c666 fz28",
+        contentText: "我是一个header标签",
+        children: [
+          {
+            tagName: "h1",
+            id: "",
+            className: "logo",
+            contentText: "我是logo",
+            children: [],
+          },
+          {
+            tagName: "ul",
+            id: "",
+            className: "nav",
+            contentText: "",
+            children: [
+              {
+                tagName: "li",
+                id: "",
+                className: "list",
+                contentText: "导航1",
+                children: [],
+              },
+              {
+                tagName: "li",
+                id: "",
+                className: "list",
+                contentText: "导航2",
+                children: [],
+              },
+            ],
+          },
+        ],
+      };
+    </script>
+  </body>
+</html>

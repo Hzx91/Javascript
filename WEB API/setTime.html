@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-80"/>
+        <meta name="viewport"
+        content="width=device-width,initial-scale=1.0">
+        <title>定时器的练习</title>
+        <style>
+            div {
+                display: none;
+                margin: 180px auto;
+                width: 250px;
+                height: 250px;
+                background-color: skyblue;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <span>
+                我是一个天蓝色的盒子，我2秒后才显示。
+            </span>
+        </div>
+        <script>
+            var oDiv = document.querySelector("div");
+            console.log(oDiv);
+        /*
+            1.先声明一个变量
+            2.这个变量来存储定时器API方法
+            3.API方法中来存储一个回调函数 有两个参数一个是callback，一个是毫秒值
+        */ 
+    // 1.setTimeout(callback,time);
+    // 犯了个小错：out首字母要小写
+       var timerDiv = setTimeout(function () {
+        /* window.onclick = function () {
+            oDiv.style.display = "block";
+            console.log("嘿嘿，你好棒啊把我调用出来了o!!!");
+            // 5秒后再点击才会有效果，5秒前点击是不会出来的
+        } */
+        console.log("嘿嘿，你好棒啊把我调用出来了o!!!");
+       },5000);
+    //    写定时器序号和变量名都可以清除定时器
+    //    clearTimeout(1);
+    clearTimeout(timerDiv);
+        </script>
+    </body>
+</html>

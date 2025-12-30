@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隐式转换</title>
+</head>
+<body>
+    <script>
+        //字符串转为Boolean类型
+        var B = !!'123';
+        console.log(B);
+        var S = '1';
+        //Boolean和string进行短路与比较
+        console.log(B && S,typeof(B && S));
+        //字符串转为number类型
+        console.log(S++,typeof(S));
+        //NaN转换为number类型
+        var N = NaN;
+        console.log(++N);
+        //undefined转换为number类型
+        var de = undefined;
+        console.log(++de);
+        //null对象转换为number类型 null隐式转换为0，但是在相等操作符中不能转换为0 
+        var n = null;
+        console.log(++n);
+
+        //练习
+        console.log('\u0035' + (true * 2) + -false);
+
+        var uid = true;
+        console.log(1 === uid);
+        
+        console.log(' ' + NaN - false + !-1,typeof(' ' + NaN - false + !-1));
+
+        console.log(!-[-1,]);
+
+        console.log(1 + undefined);
+
+        console.log(1 + null);
+
+        console.log(NaN == NaN);
+
+        console.log(null !== undefined);
+
+        console.log(2 + '5' - 3,typeof(2 + '5' - 3));
+
+        console.log(6 > '3',typeof(6 > '3'));
+        console.log(6 > '3' == 3,typeof(6 > '3' == 3));
+
+        console.log(parseInt('13.33' === ~~'13.33'));
+    </script>
+</body>
+</html>

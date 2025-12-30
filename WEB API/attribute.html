@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>attribute</title>
+</head>
+<body>
+    <p style="border: 1px solid black;font-weight: bolder" >Lorem ipsum dolor sit amet consectetur</p>
+    <script>
+        var oP = document.querySelector('p');
+        console.log(oP.border);
+        console.log(oP.style);
+        console.log(oP.style.border);
+        //下面两行是正确的中间有连字符命名的写法
+        console.log(oP.style.fontWeight);
+        console.log(oP.style['font-weight']);
+        console.log(oP.style.cssText);
+        // 对于下面两行控制台输出‘null’，是因为border和font-weight都是css中的样式，不是HTML中的样式。getAttribute（）方法只能获取HTML中的标准样式。
+        console.log(oP.getAttribute('border'));
+        console.log(oP.getAttribute('font-weight'));//为什么这里是空呢
+        
+    </script>
+</body>
+</html>

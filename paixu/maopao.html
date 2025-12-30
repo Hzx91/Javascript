@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset='UTF-8'>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>冒泡排序</title>
+    </head>
+    <body>
+        <script>
+            var arr = [9,5,6,8,2,7,3,4,1];
+            var len = arr.length;//存放数组长度，便于调用，不至于每次调用的时候都需要计算一下
+            var temp;//中间变量，用于交换位置，存放小的那个数
+            //外层大循环——因为有九个数每个数都要循环，所以循环九次
+            for (i = 0;i < len;i++) {
+            //内层循环——一个数和其他数比较，并交换位置
+            for (var j = 0;j < len - 1 - i;j++)//len - 1 - i:减1是减去本身，不需要和本身比；减i是每大循环一次就会确定一个数的位置，所以就无需和确定好的数比较了
+            {
+                //两两比较调换位置
+                if (arr[j] > arr[j+1]) {
+                    temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+            console.log("内层循环arr数组为:"+ arr);
+        }
+            console.log("最终结果为:"+ arr);
+        </script>
+    </body>
+</html>
