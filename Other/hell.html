@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄蔓 - 简历</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2555db',
+                        text: '#242424',
+                        light: '#f5f5f5'
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans SC', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .page-a4 {
+                width: 210mm;
+                min-height: 297mm;
+                padding: 15mm;
+                margin: 1rem auto;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                background: white;
+            }
+            .section-title {
+                @apply text-primary font-bold border-b-2 border-primary pb-1 mb-3 mt-4;
+            }
+            .entry-item {
+                @apply mb-2;
+            }
+            .text-smaller {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+        
+        @media print {
+            body {
+                background: none;
+                margin: 0;
+                padding: 0;
+            }
+            .page-a4 {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+                box-shadow: none;
+                page-break-after: avoid;
+            }
+            @page {
+                size: A4;
+                margin: 15mm;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans text-text">
+    <div class="page-a4">
+        <!-- 头部信息 -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <div>
+                <h1 class="text-2xl md:text-3xl font-bold mb-1">黄蔓</h1>
+                <h2 class="text-lg md:text-xl text-primary">web前端开发</h2>
+                <span>期望薪资：12k-15k</span>
+                <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-smaller">
+                    <span><i class="fa fa-phone mr-1"></i>19567891273</span>
+                    <span><i class="fa fa-envelope mr-1"></i>3274801970@qq.com</span>
+                    <span><i class="fa fa-map-marker mr-1"></i>成都</span>
+                    <span><i class="fa fa-graduation-cap mr-1"></i>数字媒体技术（本科）</span>
+                </div>
+            </div>
+            <div class="mt-3 md:mt-0">
+                <img src="https://oss.upcv.tech/resume/avatar/cmgkjhr8v0dlymm2cuh7zl1i7/i9npa3vtnw3tgxol5tnxxf8m.jpg?t=1760082352241" 
+                     alt="个人照片" 
+                     class="w-24 h-32 object-cover rounded-md border border-gray-200">
+            </div>
+        </header>
+
+        <!-- 个人总结 -->
+        <section class="mb-3">
+            <h3 class="section-title text-lg">个人总结</h3>
+            <p class="text-smaller leading-relaxed">
+                作为一名数字媒体技术专业应届生，系统掌握 HTML5/CSS3（Flex/Grid 布局）、JavaScript（ES6+）核心语法，熟悉 Vue3 基础用法与 TypeScript 类型定义。在校期间独立完成 2 个前端项目：①用 Vue3+Pinia 开发个人博客系统，实现文章 CRUD 与标签分类功能；②基于 ECharts 制作数据可视化看板，优化图表加载逻辑提升渲染效率 30%。熟练使用 Git 协作与 Vite 构建工具，持续通过技术博客跟进 React Hooks 新特性，具备扎实的编码规范意识与快速学习能力，期待在实战中积累项目经验。
+            </p>
+        </section>
+<!-- 专业学习成果 -->
+                <section class="mb-3">
+                    <h3 class="section-title text-lg">专业学习成果</h3>
+                    <div class="entry-item">
+                        <div class="flex justify-between">
+                            <h4 class="font-semibold">成都银杏酒店管理学院</h4>
+                            <span class="text-smaller text-gray-600">2022-09 - 2026-07</span>
+                        </div>
+                        <p class="text-smaller mt-1">
+                            核心课程：网页设计基础(92分) | 前端开发专业实习(97.3分) | 软件工程(90.9) | 软件开发专业实习(88分)
+                        </p>
+                    </div>
+                </section>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- 左侧列 -->
+            <div class="md:col-span-2">
+                <!-- 项目经历 -->
+                <section class="mb-3">
+                    <h3 class="section-title text-lg">项目经历</h3>
+                    <div class="entry-item">
+                        <div class="flex justify-between">
+                            <h4 class="font-semibold">大学生心理健康小程序</h4>
+                            <span class="text-smaller text-gray-600">2025-04-25 - 2022-05-23</span>
+                        </div>
+                        <p class="text-smaller mt-1 leading-relaxed">
+                            <strong>项目背景：</strong>针对大学生群体受学业、就业、人际关系等因素影响产生的心理问题，提供便捷的心理支持与缓解渠道。<br>
+                            <strong>个人角色：</strong>项目负责人<br>
+                            <strong>项目执行：</strong>通过问卷调研与用户访谈收集需求，实现压力检测与评估、即时疏导、心理资源库三大核心功能，利用Echars实现数据可视化，微信云函数自动分配"匿名ID"。<br>
+                            <strong>项目成果：</strong>独立完成从调研到落地的全流程，有效填补大学生心理支持缺口，获用户认可。
+                        </p>
+                    </div>
+                </section>
+
+                
+
+                <!-- 社团和组织经历 -->
+                <section class="mb-3">
+                    <h3 class="section-title text-lg">校园经历</h3>
+                    <div class="entry-item">
+                        <ul class="text-smaller mt-1 list-disc list-inside leading-relaxed">
+                            <li><b>学生工作：组织委员</b></li>
+                            <div>
+                                负责班级活动策划与落地，如 “毕业季纪念活动”，协调 5 名同学分工，完成活动流程设计、物料准备及现场执行，最终参与人数达 40 人，获得班级 90% 好评。
+                                主导班级信息数字化整理，用 Excel 搭建班级成员信息表，包含联系方式、学业成绩等模块，实现信息快速查询，减少 80% 信息查找时间，提升班级事务处理效率。
+                            </div>
+                            <li><b>技术实践：小程序与网页开发</b></li>
+                            <div>
+                                作为小组组长，带领 4 名同学开发 “校园二手书交易小程序”，负责前端页面搭建，使用 HTML、CSS、JavaScript 实现商品列表、详情页及购物车功能，同时对接后端接口，完成数据交互，最终小程序上线后累计用户达 200 人，促成 50 + 笔交易。
+牵头完成 “校园社团展示网页” 前后端开发，担任前端负责人，采用 Vue 框架构建页面，实现社团信息分类展示、动态轮播图及表单提交功能，后端使用 Node.js 处理数据，网页上线后被 3 个社团用于招新宣传，有效提升招新效率。
+                            </div>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 右侧列 -->
+            <div>
+                <!-- 技能 -->
+                <section class="mb-3">
+                    <h3 class="section-title text-lg">技能</h3>
+                    <div class="space-y-2">
+                        <div>
+                            <h4 class="font-medium text-sm"><b>前端核心技术</b></h4>
+                            <div class="flex flex-wrap gap-1 mt-1 text-smaller">
+                                <span class="bg-light px-2 py-0.5 rounded">HTML</span>
+                                <span class="bg-light px-2 py-0.5 rounded">CSS</span>
+                                <span class="bg-light px-2 py-0.5 rounded">Javascript</span>
+                                <span class="bg-light px-2 py-0.5 rounded">Vue</span>
+                                <span class="bg-light px-2 py-0.5 rounded">H5</span>
+                                <span class="bg-light px-2 py-0.5 rounded">Node.js</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium text-sm"><b>工程化与工具链</b></h4>
+                            <div class="flex flex-wrap gap-1 mt-1 text-smaller">
+                                <span class="bg-light px-2 py-0.5 rounded">Git</span>
+                                <span class="bg-light px-2 py-0.5 rounded">GitHub</span>
+                                <span class="bg-light px-2 py-0.5 rounded">Vite</span>
+                                <span class="bg-light px-2 py-0.5 rounded">Webpack</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium text-sm"><b>跨端与多端适配</b></h4>
+                            <div class="flex flex-wrap gap-1 mt-1 text-smaller">
+                                <span class="bg-light px-2 py-0.5 rounded">微信小程序开发</span>
+                                <span class="bg-light px-2 py-0.5 rounded">页面性能优化</span>
+                                <span class="bg-light px-2 py-0.5 rounded">浏览器兼容性</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium text-sm"><b>协作与工程能力</b></h4>
+                            <div class="flex flex-wrap gap-1 mt-1 text-smaller">
+                                <span class="bg-light px-2 py-0.5 rounded">前后端分离</span>
+                                <span class="bg-light px-2 py-0.5 rounded">代码可维护性高</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 荣誉奖项 -->
+                <section class="mb-3">
+                    <h3 class="section-title text-lg">荣誉奖项</h3>
+                    <div class="space-y-2 text-smaller">
+                        <div class="flex justify-between">
+                            <span>校级"二等奖学金"</span>
+                            <span>2024-06</span>
+                        </div>
+                        <div class="text-gray-600 ml-0">成都银杏酒店管理学院</div>
+                        
+                        <div class="flex justify-between mt-1">
+                            <span>优秀共青团员</span>
+                            <span>2025.06</span>
+                        </div>
+                        <div class="text-gray-600 ml-0">成都银杏酒店管理学院</div>
+                    </div>
+                </section>
+
+                <!-- 证书 -->
+                <section class="mb-3">
+                    <h3 class="section-title text-lg">证书</h3>
+                    <div class="space-y-2 text-smaller">
+                        <div class="flex justify-between">
+                            <span>大学英语四级证书</span>
+                            <span>2023-12</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
