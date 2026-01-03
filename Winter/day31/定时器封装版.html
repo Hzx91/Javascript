@@ -31,8 +31,51 @@
     <div class="btn">oi来点我呀~</div>
     <div class="box">天生我材必有用😎</div>
     <script>
+        // 获取按钮和盒子元素
         var btn = document.getElementsByClassName('btn');
         var box = document.getElementsByClassName('box');
+        // 给按钮添加点击事件监听器
+        btn.addEventListener('click', function () {
+            // 当按钮被点击时，调用animate函数
+            // 参数1：被移动的元素（oBox)
+            // 参数2：动画结束的位置（300px）
+            // 参数3：动画总时长（500ms）
+            animate(oBox, 300, 500);
+        }, false);
+        // 定义animate函数：让oBox元素产生向左边移动的动画效果
+        function animate(ele, end, time) {
+            // 记录动画开始的时间戳(单位：毫秒)
+            var starDate = Date.now();//例如：1720000000000
+            // 获取oBox元素当前的left值，并转换为整数
+            var currLeft = parseInt(getStyle(ele, 'left'));//getStyle()函数用于获取元素的计算样式
+            // 在元素上挂载一个定时器ID，方便后续清除，ele.time：定时器的ID号（setInterval返回的数字）
+            // setInterval每隔一段时间执行一次函数
+            // 1000/60 ≈ 16.7ms，60FPS（每秒60帧）接近于浏览器每一帧的刷新时间，这是流畅动画的标准帧率
+            ele.time = setInterval(function () {
+                // 获取当前时间的时间戳Date.now()
+                var nowDate = Date.now();
+                // 时间系数speed（0~1）：（当前时间-开始时间）/总时间 ，表示动画完成的百分比
+                // 例如：动画开始16ms后，speed = 16/500 = 0.032
+                speed = (nowDate - startDate) / time;
+                //在控制台输出当前的速度系数，用于调试
+                console.log(speed);
+                //重新获取oBox元素当前的left值（因为可能被修改过）
+                currentLeft = parseInt(getStyle(ele, 'left'));
+                // 判断条件：如果当前位置已经达到或超过目标位置
+                if (currLeft >= end) {
+                    //确保元素精确停留在目标位置
+                    ele.style.left = end + 'px';
+                    // 清除定时器，停止动画
+                    clearInterval(ele.time);
+                    // 终止函数执行
+                    return false;
+                }
+                // 核心动画公式：计算下一帧的位置/新位置→当前位置 + 时间系数speed * 剩余距离
+                // 随时间推移，速度会逐渐减慢（减速运动）
+                ele.style.left = currLeft + speed * (end - currLeft) + 'px';
+            }, 1000 / 60);//每隔16.7毫秒执行一次
+        }
+
     </script>
 </body>
 
