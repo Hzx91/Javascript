@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,0">
+    <title>知识唤醒</title>
+</head>
+<style>
+    #btn {
+        width: 100px;
+        height: 50px;
+        border-radius: 10px;
+        text-align: center;
+        line-height: 50px;
+        background-color: brown;
+        cursor: pointer;
+        color: #fff;
+    }
+</style>
+
+<body>
+    <!-- 1.监听事件+定时器setInterval() -->
+    <div id="btn">来，点我🎃</div>
+    <script>
+        // 获取按钮元素
+        var btn = document.getElementById('btn');
+        // 给按钮添加点击事件监听器
+        btn.addEventListener('click', function () {
+            alert('你点我了？');
+            // 点击完后1.5秒后，每隔1.5s钟弹出一个提示框
+            btn.timer = setInterval(function () {
+                alert('我就点你，咋啦');
+            }, 1500);
+            // 这种也是不行的虽然清除定时器执行了，但是设置定时器的语句没有执行。因为清除定时器是在点击事件完成后立即就执行的，而设置的定时器是在1.5s后才执行，所以这里要用另一个非周期性的定时器来实现
+            // clearInterval(btn.timer);
+            //正确写法
+            setTimeout(function () {
+                clearInterval(btn.timer);
+            }, 6000)
+        }, false);
+        // 3秒后停止弹出提示框- 但这种写法是错的，因为在还没有发生点击事件的时候就先执行了这个，并且btn.timer还是undefined，因为btn.timer是监听事件里面的局部变量，局部变量的理解是错误的，应该是timer是btn对象的一个属性
+        // clearInterval(btn.timer);
+    </script>
+</body>
+
+</html>
