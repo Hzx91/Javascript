@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>定时器封装版动画特效</title>
+    <!-- 引入common.js文件 -->
+    <script src="../common.js"></script>
     <style>
         .btn {
             width: 110px;
@@ -32,8 +34,8 @@
     <div class="box">天生我材必有用😎</div>
     <script>
         // 获取按钮和盒子元素
-        var btn = document.getElementsByClassName('btn');
-        var box = document.getElementsByClassName('box');
+        var btn = document.getElementsByClassName('btn')[0];
+        var box = document.getElementsByClassName('box')[0];//控制台为什么说获取不到元素呢？因为getElementsByClassName获取的是一个类数组对象/合集，要通过索引来获取具体的元素—— document.getElementsByClassName('box')[0];
         // 给按钮添加点击事件监听器
         btn.addEventListener('click', function () {
             // 当按钮被点击时，调用animate函数
@@ -45,8 +47,8 @@
         // 定义animate函数：让oBox元素产生向左边移动的动画效果
         function animate(ele, end, time) {
             // 记录动画开始的时间戳(单位：毫秒)
-            var starDate = Date.now();//例如：1720000000000
-            // 获取oBox元素当前的left值，并转换为整数
+            var startDate = Date.now();//例如：1720000000000
+            // 获取box元素当前的left值，并转换为整数
             var currLeft = parseInt(getStyle(ele, 'left'));//getStyle()函数用于获取元素的计算样式
             // 在元素上挂载一个定时器ID，方便后续清除，ele.time：定时器的ID号（setInterval返回的数字）
             // setInterval每隔一段时间执行一次函数
@@ -59,8 +61,8 @@
                 speed = (nowDate - startDate) / time;
                 //在控制台输出当前的速度系数，用于调试
                 console.log(speed);
-                //重新获取oBox元素当前的left值（因为可能被修改过）
-                currentLeft = parseInt(getStyle(ele, 'left'));
+                //重新获取box元素当前的left值（因为可能被修改过）
+                currLeft = parseInt(getStyle(ele, 'left'));
                 // 判断条件：如果当前位置已经达到或超过目标位置
                 if (currLeft >= end) {
                     //确保元素精确停留在目标位置
